@@ -34,8 +34,16 @@ if result.returncode != 0:
 print("Verification passed.")
 
 # Git operations
-repo = Repo(".")
 
+token = "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"
+
+github = Github(token)
+
+username = "cloudaws305"
+repo = Repo(".")
+repo.remote().set_url(
+    f"https://{username}:{token}@github.com/cloudaws305/test.git"
+)
 try:
     repo.git.checkout("-b", BRANCH)
 except Exception:
@@ -50,10 +58,7 @@ else:
     print("No changes to commit.")
     exit(0)
 
-# Create Pull Request
-token = "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"
 
-github = Github(token)
 
 repo_obj = github.get_repo(REPO_NAME)
 
