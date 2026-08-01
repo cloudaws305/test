@@ -9,7 +9,7 @@ load_dotenv("/etc/jenkins/github.env")
 token = os.getenv("token")
 username = os.getenv("username")
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix_6"
+BRANCH = "ai-auto-fix_7"
 FILE = "app.py"
 
 # Read file
