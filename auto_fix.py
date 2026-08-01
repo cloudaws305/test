@@ -44,6 +44,27 @@ repo = Repo(".")
 repo.remote().set_url(
     f"https://{username}:{token}@github.com/cloudaws305/test.git"
 )
+# Configure Git identity
+subprocess.run(
+    ["git", "config", "user.name", "cloudaws305"],
+    check=True
+)
+
+subprocess.run(
+    ["git", "config", "user.email", "yeolegm5@gmail.com"],
+    check=True
+)
+
+# Configure authenticated remote
+authenticated_url = f"https://{github_username}:{github_token}@github.com/cloudaws305/test.git"
+
+subprocess.run(
+    ["git", "remote", "set-url", "origin", authenticated_url],
+    check=True
+)
+
+# Verify remote (for debugging)
+subprocess.run(["git", "remote", "-v"])
 try:
     repo.git.checkout("-b", BRANCH)
 except Exception:
