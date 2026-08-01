@@ -5,14 +5,19 @@ from github import Github
 from dotenv import load_dotenv
 
 build_url = os.getenv("BUILD_URL")
-print(build_url)
+
+log_url = build_url + "consoleText"
+
+response = requests.get(log_url)
+print("errrooorrr")
+print(response.text)
 
 load_dotenv("/etc/jenkins/github.env")
 
 token = os.getenv("token")
 username = os.getenv("username")
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix_8"
+BRANCH = "ai-auto-fix_9"
 FILE = "app.py"
 
 # Read file
