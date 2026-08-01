@@ -4,7 +4,7 @@ from git import Repo
 from github import Github
 
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix_3"
+BRANCH = "ai-auto-fix_4"
 FILE = "app.py"
 
 # Read file
@@ -56,7 +56,7 @@ subprocess.run(
 )
 
 # Configure authenticated remote
-authenticated_url = f"https://{github_username}:{github_token}@github.com/cloudaws305/test.git"
+authenticated_url = f"https://{username}:{token}@github.com/cloudaws305/test.git"
 
 subprocess.run(
     ["git", "remote", "set-url", "origin", authenticated_url],
