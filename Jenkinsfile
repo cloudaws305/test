@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        GITHUB_TOKEN = credentials('github-token')
+        GITHUB_TOKEN = "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"
     }
 
     stages {
