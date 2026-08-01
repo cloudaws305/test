@@ -2,7 +2,12 @@ import os
 import subprocess
 from git import Repo
 from github import Github
+from dotenv import load_dotenv
 
+load_dotenv("/etc/jenkins/github.env")
+
+token = os.getenv("token")
+username = os.getenv("username")
 REPO_NAME = "cloudaws305/test"
 BRANCH = "ai-auto-fix_6"
 FILE = "app.py"
@@ -35,11 +40,7 @@ print("Verification passed.")
 
 # Git operations
 
-token = "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"
-
 github = Github(token)
-
-username = "cloudaws305"
 repo = Repo(".")
 repo.remote().set_url(
     f"https://{username}:{token}@github.com/cloudaws305/test.git"
