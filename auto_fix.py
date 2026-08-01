@@ -51,7 +51,7 @@ else:
     exit(0)
 
 # Create Pull Request
-token = os.getenv("GITHUB_TOKEN")
+token = "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"
 
 github = Github(token)
 
