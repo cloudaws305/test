@@ -53,15 +53,7 @@ repo.git.add(FILE)
 
 if repo.is_dirty():
     repo.index.commit("Auto fix: Division by zero")
-    subprocess.run(
-    [
-        "git",
-        "push",
-        f"https://{username}:{token}@github.com/cloudaws305/test.git",
-        f"{BRANCH}:{BRANCH}"
-    ],
-    check=True
-)
+    repo.remote().push(BRANCH)
 else:
     print("No changes to commit.")
     exit(0)
