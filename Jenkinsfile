@@ -1,16 +1,36 @@
 pipeline {
     agent any
 
+    environment {
+        GITHUB_TOKEN = credentials('github-token')
+    }
+
     stages {
-        stage('Division Test') {
+
+        stage('Checkout') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/cloudaws305/test.git'
+            }
+        }
+
+        stage('Install') {
+            steps {
+                sh 'python3 -m pip install -r requirements.txt'
+            }
+        }
+
+        stage('Run') {
             steps {
                 script {
                     try {
-                        def result = 1 / 0
-                        echo "Result: ${result}"
+                        sh 'python3 app.py'
                     } catch (Exception e) {
-                        echo "Exception Type: ${e.getClass().getName()}"
-                        echo "Exception Message: ${e.getMessage()}"
+                        echo "Application failed."
+
+                        sh 'python3 auto_fix.py'
+
+                        error("Original build failed. Auto-fix PR created.")
                     }
                 }
             }
