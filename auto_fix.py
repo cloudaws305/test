@@ -4,7 +4,7 @@ from git import Repo
 from github import Github
 
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix"
+BRANCH = "ai-auto-fix_1"
 FILE = "app.py"
 
 # Read file
