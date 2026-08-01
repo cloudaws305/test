@@ -4,7 +4,7 @@ from git import Repo
 from github import Github
 
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix_5"
+BRANCH = "ai-auto-fix_6"
 FILE = "app.py"
 
 # Read file
@@ -35,7 +35,7 @@ print("Verification passed.")
 
 # Git operations
 
-token = "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"
+token = "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"
 
 github = Github(token)
 
