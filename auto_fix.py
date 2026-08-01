@@ -4,7 +4,7 @@ from git import Repo
 from github import Github
 
 REPO_NAME = "cloudaws305/test"
-BRANCH = "ai-auto-fix_2"
+BRANCH = "ai-auto-fix_3"
 FILE = "app.py"
 
 # Read file
@@ -53,7 +53,15 @@ repo.git.add(FILE)
 
 if repo.is_dirty():
     repo.index.commit("Auto fix: Division by zero")
-    repo.remote().push(BRANCH)
+    subprocess.run(
+    [
+        "git",
+        "push",
+        f"https://{username}:{token}@github.com/cloudaws305/test.git",
+        f"{BRANCH}:{BRANCH}"
+    ],
+    check=True
+)
 else:
     print("No changes to commit.")
     exit(0)
